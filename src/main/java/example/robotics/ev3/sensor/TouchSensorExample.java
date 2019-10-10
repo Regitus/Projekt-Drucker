@@ -1,19 +1,23 @@
 package example.robotics.ev3.sensor;
 
+import ev3dev.actuators.lego.motors.EV3LargeRegulatedMotor;
 import ev3dev.sensors.Battery;
 import ev3dev.sensors.ev3.EV3TouchSensor;
+import lejos.hardware.port.MotorPort;
 import lejos.hardware.port.SensorPort;
 import lejos.robotics.SampleProvider;
 import lejos.utility.Delay;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+
+
 public class TouchSensorExample {
 
 	public static Logger LOGGER = LoggerFactory.getLogger(TouchSensorExample.class);
 
 	//Robot Configuration
-	private static EV3TouchSensor touch1 = new EV3TouchSensor(SensorPort.S1);
+	private static EV3TouchSensor touch1 = new EV3TouchSensor(SensorPort.S4);
 	
 	//Configuration
 	private static int HALF_SECOND = 500;

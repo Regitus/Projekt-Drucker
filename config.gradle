@@ -1,8 +1,10 @@
 // Project configuration
 brick.pref {
     // Main class //
-    mainClass = "example.programming.HelloWorld"
+    mainClass = "aufgaben.Aufgabe2"
 
+    //example.robotics.ev3.sensor.TouchSensorExample
+    //example.robotics.ev3.actuator.motor.BasicMotorOperationExample
     // Brick connection parameters //
     sshHost = "169.254.88.51"
     sshUser = "robot"

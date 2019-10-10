@@ -12,18 +12,26 @@ class BasicMotorOperationExample {
 
     public static int DELAY = 2000; //2 Sedonds
 
-    public static final EV3LargeRegulatedMotor mA = new EV3LargeRegulatedMotor(MotorPort.A);
+    public static final EV3LargeRegulatedMotor mA1 = new EV3LargeRegulatedMotor(MotorPort.A);
+    public static final EV3LargeRegulatedMotor mB1 = new EV3LargeRegulatedMotor(MotorPort.B);
+    public static final EV3LargeRegulatedMotor mC1 = new EV3LargeRegulatedMotor(MotorPort.C);
 
     public static void main(String[] args) {
+        testDerMotoren(mA1);
+        testDerMotoren(mB1);
+        testDerMotoren(mC1);
+    }
 
+    public static void testDerMotoren( EV3LargeRegulatedMotor mA){
         LOGGER.info("Starting motors on A");
         mA.setSpeed(500);
         mA.brake();
 
+        /*
         LOGGER.info("Forward");
         mA.forward();
         LOGGER.info("Large Motor is moving: {}, at speed {}", mA.isMoving(), mA.getSpeed());
-        Delay.msDelay(DELAY);
+        Delay.msDelay(DELAY);*/
 
         LOGGER.info("Stop");
         mA.stop();
@@ -39,13 +47,12 @@ class BasicMotorOperationExample {
         mA.stop();
         LOGGER.info("Large Motor is moving: {}, at speed {}", mA.isMoving(), mA.getSpeed());
         Delay.msDelay(DELAY);
-
+        /*
         LOGGER.info("Forward");
         mA.forward();
         Delay.msDelay(2000);
         mA.stop();
-        LOGGER.info("Stop");
-
+        LOGGER.info("Stop");*/
     }
 
 }
