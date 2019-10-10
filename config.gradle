@@ -4,7 +4,7 @@ brick.pref {
     mainClass = "example.programming.HelloWorld"
 
     // Brick connection parameters //
-    sshHost = "10.0.0.89"
+    sshHost = "169.254.88.51"
     sshUser = "robot"
     sshPassword = "maker"
 }
