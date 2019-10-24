@@ -9,7 +9,7 @@ public class StoptestMain {
     	
     	Stoptest st = new Stoptest();
     	
-    	StopClass stopClass = new StopClass(st.touch1, new Thread(st), st.mA);
+    	StopClass stopClass = new StopClass(st.touch1, st, st.mA);
     	stopClass.start();
     	
        // Motor.movesync(5, 5, 5);
