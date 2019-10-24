@@ -11,10 +11,10 @@ public class StopClass extends Thread
      * Nicht funktionierend
      */
     private EV3TouchSensor touch1;
-    Thread tmpThread;
+    Stoptest tmpThread;
     EV3LargeRegulatedMotor motor;
     
-    public StopClass(EV3TouchSensor touch, Thread tt, EV3LargeRegulatedMotor motor)
+    public StopClass(EV3TouchSensor touch, Stoptest tt, EV3LargeRegulatedMotor motor)
     {
         touch1 = touch;
         tmpThread = tt;
@@ -23,6 +23,7 @@ public class StopClass extends Thread
 
     @Override
     public void run() {
+    	
     	tmpThread.start();
         final SampleProvider sp = touch1.getTouchMode();
         int touchValue = 0;
@@ -32,7 +33,7 @@ public class StopClass extends Thread
             float [] sample = new float[sp.sampleSize()];
             sp.fetchSample(sample, 0);
             touchValue = (int) sample[0];
-        }
+        } 
         System.out.println("NotStop!");
         motor.stop();
         tmpThread.interrupt();
