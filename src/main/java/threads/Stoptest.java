@@ -24,9 +24,10 @@ public class Stoptest extends Thread{
     @Override
     public void run()
     {
+    	mA.rotate(55);
     	while(true)
     		{
-    	mA.rotate(90);
+    	
     		}
     }
 
