@@ -1,11 +1,9 @@
 package main.java.threads;
 
-import ev3dev.actuators.lego.motors.EV3LargeRegulatedMotor;
-import ev3dev.sensors.ev3.EV3TouchSensor;
-import example.robotics.ev3.sensor.TouchSensorExample;
+import lejos.hardware.motor.EV3LargeRegulatedMotor;
+import lejos.hardware.sensor.EV3TouchSensor;
 import lejos.robotics.SampleProvider;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+
 
 public class StopClass extends Thread
 {
@@ -15,7 +13,7 @@ public class StopClass extends Thread
     private EV3TouchSensor touch1;
     Thread tmpThread;
     EV3LargeRegulatedMotor motor;
-    private static Logger logger = LoggerFactory.getLogger(TouchSensorExample.class);
+    
     public StopClass(EV3TouchSensor touch, Thread tt, EV3LargeRegulatedMotor motor)
     {
         touch1 = touch;
@@ -25,6 +23,7 @@ public class StopClass extends Thread
 
     @Override
     public void run() {
+    	tmpThread.start();
         final SampleProvider sp = touch1.getTouchMode();
         int touchValue = 0;
         while(touchValue != 1)
@@ -34,6 +33,7 @@ public class StopClass extends Thread
             sp.fetchSample(sample, 0);
             touchValue = (int) sample[0];
         }
+        System.out.println("NotStop!");
         motor.stop();
         tmpThread.interrupt();
     }

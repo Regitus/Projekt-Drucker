@@ -47,14 +47,15 @@ public class Aufgabe2 {
                 System.out.println("Stop");
             }
         }
-        //mA.setSpeed(500);
+        mA.setSpeed(500);
         mA.stop();
-        //mA.backward();
-        //Delay.msDelay(1000);
-        //mA.stop();
+        mA.backward();
+        Delay.msDelay(1000);
+        mA.stop();
         //LOGGER.info("Stop");
         mA.close();
         //Motor.move(10,1, MotorPort.B);
+        System.out.println("Starte Sync");
         Motor.movesync(5, 5, 5);
 
 

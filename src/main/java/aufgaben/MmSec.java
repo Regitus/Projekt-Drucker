@@ -16,6 +16,6 @@ public class MmSec
 
     public static void main(String[] args) {
         //Motor.move(2,5, MotorPort.B);
-        Motor.move(5,5,5);
+        Motor.movesync(5,5,5);
     }
 }

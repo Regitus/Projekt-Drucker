@@ -57,21 +57,26 @@ public class Motor {
 
 
         mA.setSpeed((int) gradPerSecondA);
-
-
         mB.setSpeed((int) gradPerSecondB);
-
         /*
         Synchronisierung
          */
         mA.synchronizeWith(liste);  //Im Array ist mB derzeit drin
+        System.out.println("Start Sync");
+        
         mA.startSynchronization();  //Alles ab hier läuft gleichzeitig.
+        
         mA.backward();
-        //mB.backward();
-        Delay.msDelay((long)seconds * 1000);
-        mA.stop();
-        //mB.stop();
+        mB.backward();
+
         mA.endSynchronization();    //Alles läuft wieder getrennt
+        
+        Delay.msDelay((long)seconds * 1000);
+        mA.startSynchronization();
+        mA.stop();
+        mB.stop();
+        mA.endSynchronization();
+        System.out.println("EndSync");
     }
 
 
