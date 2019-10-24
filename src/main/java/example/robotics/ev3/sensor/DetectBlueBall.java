@@ -1,13 +1,6 @@
 package main.java.example.robotics.ev3.sensor;
 
-import ev3dev.actuators.Sound;
-import ev3dev.sensors.ev3.EV3ColorSensor;
-import lejos.hardware.port.SensorPort;
-import lejos.robotics.Color;
-import lejos.robotics.SampleProvider;
-import lejos.utility.Delay;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import com.jcraft.jsch.Logger;
 
 public class DetectBlueBall {
 
