@@ -11,7 +11,7 @@ public class AchsenMotor extends Motor {
 		super(port);
 	}
 	
-	public void positionÄndern(int position, int time) {
+	public void positionaendern(int position, int time) {
 		
 	}
 

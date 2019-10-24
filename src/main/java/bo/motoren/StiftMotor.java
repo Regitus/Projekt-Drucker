@@ -9,7 +9,7 @@ public class StiftMotor extends Motor{
 		super(port);
 	}
 	
-	public void positionÄndern(Stellung stellung) {
+	public void positionaendern(Stellung stellung) {
 		
 	}
 	
