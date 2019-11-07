@@ -2,6 +2,7 @@ package main.java.bo.motoren;
 
 import lejos.hardware.motor.EV3LargeRegulatedMotor;
 import lejos.hardware.port.Port;
+import lejos.robotics.RegulatedMotor;
 import main.java.bo.MathUtil;
 
 public class AchsenMotor extends Motor {
@@ -28,6 +29,36 @@ public class AchsenMotor extends Motor {
 	
 	public double getPosition() {
 		return letztePosition;
+	}
+	
+	/**
+	 * Aufrufen bevor eine gesyncte Bewegung gemacht werden soll mit der Methode "bewegeMotor"
+	 * @param position Neue Position
+	 * @param time Dauer der Bewegung
+	 */
+	public void setzeGeschwindigkeit(double position, double time)
+	{
+		double differenz = position - letztePosition;
+		super.move(differenz, time, UMFANG);
+	}
+	
+	/**
+	 * Nur Bewegen, am besten vorher mit setzeGeschwindigkeit den Speed festsetzen
+	 * @param position Neue Position
+	 * @param time Dauer der Bewegung
+	 */
+	public void bewegeMotor(double position, double time)
+	{
+		double differenz = position - letztePosition;
+		if(differenz < 0) {
+			super.getMotor().forward();
+		}
+		else {
+			super.getMotor().backward();
+		}
+		
+		letztePosition = position;
+		
 	}
 
 }
