@@ -5,7 +5,7 @@ import lejos.hardware.port.Port;
 
 public class StiftMotor extends Motor{
 	
-	private Stellung lastStellung;
+	private Stellung lastStellung = Stellung.UNTEN;
 	private static final int OBEN_POSITION = 1;
 	private static final int TIME = 1;
 	private static final int UMFANG = 4;
