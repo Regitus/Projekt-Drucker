@@ -26,9 +26,9 @@ public class Reichweitentest2 {
 		int i = -1;
 		while (lichtSens.isPressed())
 		{
-			xMotor.positionaendern(i, 1);
+			xMotor.positionaendern(i, 0.5);
 			System.out.println("i= " + i);
-			Delay.msDelay(1000);
+			Delay.msDelay(500);
 			xMotor.stop();
 			i--;
 		}
