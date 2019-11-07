@@ -61,10 +61,13 @@ public class DruckerRoboter {
 		EV3LargeRegulatedMotor syncListe[] = new EV3LargeRegulatedMotor[1];
 		syncListe[0] = xAchsenMotor.getMotor();
 		
+		yAchsenMotor.setzeGeschwindigkeit(x, time);
+		xAchsenMotor.setzeGeschwindigkeit(y, time);
+		
 		yAchsenMotor.synchronise(syncListe);
 		yAchsenMotor.sychroniseStart();
-		yAchsenMotor.positionaendern(x, time);
-		xAchsenMotor.positionaendern(y, time);
+		yAchsenMotor.bewegeMotor(x, time);
+		xAchsenMotor.bewegeMotor(y, time);
 		yAchsenMotor.synchroniseEnd();
 		int msTime = (int) (1000 * time);
 		Delay.msDelay(msTime);
