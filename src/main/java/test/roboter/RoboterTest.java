@@ -10,6 +10,11 @@ public class RoboterTest {
 		roboter.move(4, 0);
 		roboter.move(3,  1);
 		roboter.move(1, 1);
+		/*roboter.moveSync(2, 2);
+		roboter.moveSync(4, 0);
+		roboter.moveSync(3, 1);
+		roboter.moveSync(1, 1);*/
+		
 	}
 
 }
