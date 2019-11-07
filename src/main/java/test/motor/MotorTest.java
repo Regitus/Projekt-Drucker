@@ -15,6 +15,8 @@ public class MotorTest {
 		StiftMotor stiftMotor = (StiftMotor) motorFactory.create(MotorTyp.XAchsenMotor);
 		AchsenMotor yMotor = (AchsenMotor) motorFactory.create(MotorTyp.YAchsenMotor);
 		AchsenMotor xMotor = (AchsenMotor) motorFactory.create(MotorTyp.StiftMotor);
+		
+		yMotor.move(differenz, time, umfang);
 	}
 
 }
