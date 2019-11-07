@@ -6,7 +6,7 @@ import main.java.bo.MathUtil;
 
 public class AchsenMotor extends Motor {
 	private int letztePosition;
-	private static final int RADIUS = 4;
+	private static final int UMFANG = 4;
 	
 	public AchsenMotor(Port port) {
 		super(port);
@@ -14,8 +14,8 @@ public class AchsenMotor extends Motor {
 	
 	public void positionaendern(int position, int time) {
 		int differenz = position - letztePosition;
-		double gradProSekunde = MathUtil.toDegree(position, time, RADIUS);
-		super.getMotor().setSpeed((int)gradProSekunde);
+		super.move(differenz, time, UMFANG);
+		letztePosition = position;
 	}
 
 }
