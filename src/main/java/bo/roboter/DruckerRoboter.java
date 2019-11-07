@@ -41,12 +41,11 @@ public class DruckerRoboter {
 		} else {
 			time = Math.abs(y - yAchsenMotor.getPosition()) * Properties.maxGeschwindigkeit;
 		}
+		System.out.println("Time: " + time);
 		yAchsenMotor.positionaendern(x, time);
 		xAchsenMotor.positionaendern(y, time);
 		int msTime = (int) (1000 * time);
 		Delay.msDelay(msTime);
-		yAchsenMotor.stop();
-		xAchsenMotor.stop();
 	}
 	
 	public void moveSync(double x, double y) {
@@ -56,6 +55,7 @@ public class DruckerRoboter {
 		} else {
 			time = Math.abs(y - yAchsenMotor.getPosition()) * Properties.maxGeschwindigkeit;
 		}
+		
 		
 		/*
 		 * Liste für gesyncte Motoren, die zu yAchsen bewegt werden sollen
@@ -75,10 +75,10 @@ public class DruckerRoboter {
 		Delay.msDelay(msTime);
 		
 		
-		yAchsenMotor.sychroniseStart();
+		/*yAchsenMotor.sychroniseStart();
 		yAchsenMotor.stop();
 		xAchsenMotor.stop();
-		yAchsenMotor.synchroniseEnd();
+		yAchsenMotor.synchroniseEnd();*/
 	}
 	
 	

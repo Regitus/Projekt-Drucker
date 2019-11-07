@@ -21,10 +21,12 @@ public class AchsenMotor extends Motor {
 		else {
 			super.getMotor().backward();
 		}
+		System.out.println("Differenz: " + differenz);
 		differenz = Math.abs(differenz);
 		
 		super.move(differenz, time, UMFANG);
 		letztePosition = position;
+		System.out.println("Letzte Position" + letztePosition);
 	}
 	
 	public double getPosition() {
