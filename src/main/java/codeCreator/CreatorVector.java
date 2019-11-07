@@ -36,7 +36,7 @@ public class CreatorVector {
         realY = Math.round(realY*100)/100.0;
         if(realX <16 && realY <15){
             //return "roboter.move("+realX+","+realY+","+ draw+");";
-            return "roboter.moveSync("+realX+","+realY+");";
+            return "roboter.move("+realX+","+realY+");";
         } else {
             return "";
         }
