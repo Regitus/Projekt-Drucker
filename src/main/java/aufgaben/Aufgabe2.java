@@ -21,7 +21,7 @@ public class Aufgabe2 {
     public static final EV3LargeRegulatedMotor mA = new EV3LargeRegulatedMotor(MotorPort.B);
     
     //Robot Configuration
-    private static EV3TouchSensor touch1 = new EV3TouchSensor(SensorPort.S2);
+    private static EV3TouchSensor touch1 = new EV3TouchSensor(SensorPort.S1);
 
     //Configuration
     private static int HALF_SECOND = 500;
