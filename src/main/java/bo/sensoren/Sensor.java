@@ -2,7 +2,7 @@ package main.java.bo.sensoren;
 
 import lejos.hardware.port.Port;
 
-public class Sensor {
+public abstract class Sensor {
 	private Port port;
 
 	
@@ -11,6 +11,7 @@ public class Sensor {
 	}
 	
 	public boolean isPressed() {
+		
 		return false;
 	
 	}

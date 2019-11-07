@@ -10,6 +10,11 @@ import com.jcraft.jsch.*;
 import lejos.hardware.motor.*;
 import lejos.robotics.SampleProvider;
 import lejos.utility.Delay;
+import main.java.bo.factories.AbstractFactory;
+import main.java.bo.factories.FactoryProvider;
+import main.java.bo.factories.FactoryTyp;
+import main.java.bo.factories.MotorFactory;
+import main.java.bo.factories.MotorTyp;
 
 
 public class Aufgabe2 {
@@ -22,7 +27,7 @@ public class Aufgabe2 {
     private static int HALF_SECOND = 500;
 
     public static void main(String[] args) {
-
+    	
         final SampleProvider sp = touch1.getTouchMode();
         int touchValue = 0;
 
