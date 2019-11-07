@@ -6,15 +6,19 @@ public class RoboterTest {
 	
 	public static void main(String[] args) {
 		DruckerRoboter roboter = new DruckerRoboter();
-		/*roboter.move(2, 2);
+		System.out.println("Start - Stift 1");
+		roboter.move(2, 2);
+		System.out.println("Stift 2");
 		roboter.move(4, 0);
+		System.out.println("Stift 3");
 		roboter.move(3,  1);
-		roboter.move(1, 1);*/
+		System.out.println("Stift 4");
+		roboter.move(1, 1);
 		/*roboter.moveSync(2, 2);
 		roboter.moveSync(4, 0);
 		roboter.moveSync(3, 1);
 		roboter.moveSync(1, 1);*/
-		roboter.move(3.12,2.35);
+		/*roboter.move(3.12,2.35);
 		roboter.move(3.12,2.39);
 		roboter.move(3.12,2.42);
 		roboter.move(3.12,2.45);
@@ -145,7 +149,7 @@ public class RoboterTest {
 		roboter.move(6.55,5.38);
 		roboter.move(6.59,5.41);
 		roboter.move(6.62,5.44);
-		roboter.move(6.62,5.44);
+		roboter.move(6.62,5.44);*/
 
 
 		
