@@ -18,9 +18,9 @@ public class MotorTest {
 		AchsenMotor yMotor = (AchsenMotor) motorFactory.create(MotorTyp.YAchsenMotor);
 		//AchsenMotor xMotor = (AchsenMotor) motorFactory.create(MotorTyp.XAchsenMotor);
 		//stiftMotor.positionaendern(Stellung.OBEN);
-		int time = 3;
+		int time = 60;
 		
-		yMotor.positionaendern(3, time);
+		yMotor.positionaendern(-5, time);
 		//xMotor.positionaendern(1, 1);
 		Delay.msDelay(time * 1000);
 		yMotor.stop();
