@@ -6,7 +6,7 @@ import main.java.bo.MathUtil;
 
 public class AchsenMotor extends Motor {
 	private int letztePosition;
-	private static final int RADIUS = 4;
+	private static final int UMFANG = 4;
 	
 	public AchsenMotor(Port port) {
 		super(port);
