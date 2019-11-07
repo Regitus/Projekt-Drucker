@@ -20,13 +20,13 @@ public class MotorTest {
 		//stiftMotor.positionaendern(Stellung.OBEN);
 		double time = 0.5;
 		
-		yMotor.positionaendern(-5, time);
+		yMotor.positionaendern(5, time);
 		//xMotor.positionaendern(1, 1);
 		Delay.msDelay((long) (time * 1000));
 		yMotor.stop();
-		yMotor.positionaendern(0, time);
+		/*yMotor.positionaendern(0, time);
 		Delay.msDelay((long) (time * 1000));
-		yMotor.stop();
+		yMotor.stop();*/
 		
 	}
 

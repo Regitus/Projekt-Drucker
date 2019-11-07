@@ -32,7 +32,7 @@ public class Reichweitentest {
 			i--;
 		}
 		
-		i += 2;
+		/*i += 2;
 		int anzahl = 0;
 		anzahl++;
 		System.out.println(anzahl);
@@ -52,7 +52,7 @@ public class Reichweitentest {
 			i++;
 		}
 		System.out.println(anzahl);
-		Delay.msDelay(3000);
+		Delay.msDelay(3000);*/
 		
 
 	}
