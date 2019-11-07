@@ -18,14 +18,14 @@ public class MotorTest {
 		AchsenMotor yMotor = (AchsenMotor) motorFactory.create(MotorTyp.YAchsenMotor);
 		//AchsenMotor xMotor = (AchsenMotor) motorFactory.create(MotorTyp.XAchsenMotor);
 		//stiftMotor.positionaendern(Stellung.OBEN);
-		int time = 60;
+		double time = 0.5;
 		
 		yMotor.positionaendern(-5, time);
 		//xMotor.positionaendern(1, 1);
-		Delay.msDelay(time * 1000);
+		Delay.msDelay((long) (time * 1000));
 		yMotor.stop();
 		yMotor.positionaendern(0, time);
-		Delay.msDelay(time * 1000);
+		Delay.msDelay((long) (time * 1000));
 		yMotor.stop();
 		
 	}
