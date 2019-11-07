@@ -25,12 +25,20 @@ public class Reichweitentest {
 		int i = -1;
 		while (!touchSensor.isPressed())
 		{
-			yMotor.positionaendern(i, 1);
+			yMotor.positionaendern(i, 0.5);
 			System.out.println("i= " + i);
-			Delay.msDelay(1000);
+			Delay.msDelay(500);
 			yMotor.stop();
 			i--;
 		}
+		
+		/*for (int y = 0; y < 16; y++) {
+			yMotor.positionaendern(y, 0.5);
+			System.out.println("y= " + y);
+			Delay.msDelay(500);
+			yMotor.stop();
+			
+		}*/
 		
 		/*i += 2;
 		int anzahl = 0;
