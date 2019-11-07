@@ -45,6 +45,8 @@ public class DruckerRoboter {
 		xAchsenMotor.positionaendern(y, time);
 		int msTime = (int) (1000 * time);
 		Delay.msDelay(msTime);
+		yAchsenMotor.stop();
+		xAchsenMotor.stop();
 	}
 	
 	public void moveSync(double x, double y) {
