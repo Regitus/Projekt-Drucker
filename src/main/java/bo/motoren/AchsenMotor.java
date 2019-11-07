@@ -5,15 +5,23 @@ import lejos.hardware.port.Port;
 import main.java.bo.MathUtil;
 
 public class AchsenMotor extends Motor {
-	private int letztePosition;
+	private double letztePosition = 0;
 	private static final int UMFANG = 4;
 	
 	public AchsenMotor(Port port) {
 		super(port);
 	}
 	
-	public void positionaendern(int position, int time) {
-		int differenz = position - letztePosition;
+	public void positionaendern(double position, double time) {
+		double differenz = position - letztePosition;
+		if(differenz < 0) {
+			super.getMotor().forward();
+		}
+		else {
+			super.getMotor().backward();
+		}
+		differenz = Math.abs(differenz);
+		
 		super.move(differenz, time, UMFANG);
 		letztePosition = position;
 	}

@@ -5,7 +5,7 @@ import lejos.hardware.port.Port;
 
 public class StiftMotor extends Motor{
 	
-	private Stellung lastStellung;
+	private Stellung lastStellung = Stellung.UNTEN;
 	private static final int OBEN_POSITION = 1;
 	private static final int TIME = 1;
 	private static final int UMFANG = 4;
@@ -20,10 +20,12 @@ public class StiftMotor extends Motor{
 		}
 
 		if(stellung == Stellung.OBEN) {
+			super.getMotor().forward();
 			super.move(OBEN_POSITION, 1, 4);
 		}
 		else {
-			super.move(-OBEN_POSITION, TIME, UMFANG);
+			super.getMotor().backward();
+			super.move(OBEN_POSITION, TIME, UMFANG);
 		}
 	}
 	

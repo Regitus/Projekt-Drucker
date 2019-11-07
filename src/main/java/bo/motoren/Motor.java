@@ -12,7 +12,7 @@ public abstract class Motor{
 		this.motor = new EV3LargeRegulatedMotor(port);
 	}
 	
-	public void move(int differenz, int time, int umfang) {
+	public void move(double differenz, double time, double umfang) {
 		double gradProSekunde = MathUtil.toDegree(differenz, time, umfang);
 		motor.setSpeed((int)gradProSekunde);
 	}
@@ -31,6 +31,13 @@ public abstract class Motor{
 
 	public void synchroniseEnd() {
 		this.motor.endSynchronization();
+	}
+	/**
+	 * Stoppt die Bewegung
+	 */
+	public void stop()
+	{
+		this.motor.stop();
 	}
 	
 }
