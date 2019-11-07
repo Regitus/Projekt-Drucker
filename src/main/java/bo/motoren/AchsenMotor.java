@@ -5,7 +5,7 @@ import lejos.hardware.port.Port;
 import main.java.bo.MathUtil;
 
 public class AchsenMotor extends Motor {
-	private int letztePosition;
+	private int letztePosition = 0;
 	private static final int UMFANG = 4;
 	
 	public AchsenMotor(Port port) {
