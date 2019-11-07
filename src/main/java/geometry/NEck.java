@@ -1,6 +1,9 @@
 package main.java.geometry;
 
 import java.util.List;
+
+import main.java.bo.MathUtil;
+
 import java.util.ArrayList;;
 
 public class NEck extends Polygon {
@@ -10,7 +13,7 @@ public class NEck extends Polygon {
 	}
 	
 	private static List<Vector> create(double radius, int n) {
-		final double gradDistance = 360 / n;
+		final double gradDistance = MathUtil.gradmassToBogenmass(360 / n);
 		final Vector firstVector = new Vector(0, radius, false);
 		
 		List<Vector> list = new ArrayList<>();

@@ -8,4 +8,8 @@ public class MathUtil {
         return gradPerSecond;
 	}
 	
+	public static double gradmassToBogenmass(double g) {
+		return (2 * Math.PI * g) / 360;
+	}
+	
 }

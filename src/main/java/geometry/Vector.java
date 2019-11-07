@@ -23,5 +23,11 @@ public class Vector {
 	public boolean shouldDraw() {
 		return draw;
 	}
+	
+	public static Vector minus(Vector a, Vector b) {
+		double x = a.getX() - b.getX();
+		double y = a.getY() - b.getY();
+		return new Vector(x, y, true);
+	}
 
 }
