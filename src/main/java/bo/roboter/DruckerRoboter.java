@@ -24,9 +24,9 @@ public class DruckerRoboter {
 	public DruckerRoboter () {
 		FactoryProvider factoryProvider = new FactoryProvider();
 		MotorFactory motorFactory = (MotorFactory) factoryProvider.getFactory(FactoryTyp.MotorFactory);
-		stiftMotor = (StiftMotor) motorFactory.create(MotorTyp.XAchsenMotor);
+		stiftMotor = (StiftMotor) motorFactory.create(MotorTyp.StiftMotor);
 		yAchsenMotor = (AchsenMotor) motorFactory.create(MotorTyp.YAchsenMotor);
-		xAchsenMotor = (AchsenMotor) motorFactory.create(MotorTyp.StiftMotor);
+		xAchsenMotor = (AchsenMotor) motorFactory.create(MotorTyp.XAchsenMotor);
 		SensorFactory sensorFactory = (SensorFactory) factoryProvider.getFactory(FactoryTyp.SensorenFactory);
 		lichtSensor = (LichtSensor) sensorFactory.create(SensorenTyp.LichtSensor);
 		touchSensor = (TouchSensor) sensorFactory.create(SensorenTyp.TouchSensor);
