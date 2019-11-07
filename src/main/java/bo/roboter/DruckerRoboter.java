@@ -35,9 +35,9 @@ public class DruckerRoboter {
 	public void move(double x, double y) {
 		double time;
 		if(x>y) {
-			time = x * Properties.maxGeschwindigkeit;
+			time = Math.abs(x - xAchsenMotor.getPosition()) * Properties.maxGeschwindigkeit;
 		} else {
-			time = y * Properties.maxGeschwindigkeit;
+			time = Math.abs(y - yAchsenMotor.getPosition()) * Properties.maxGeschwindigkeit;
 		}
 		yAchsenMotor.positionaendern(x, time);
 		xAchsenMotor.positionaendern(y, time);

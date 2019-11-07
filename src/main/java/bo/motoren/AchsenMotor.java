@@ -25,5 +25,9 @@ public class AchsenMotor extends Motor {
 		super.move(differenz, time, UMFANG);
 		letztePosition = position;
 	}
+	
+	public double getPosition() {
+		return letztePosition;
+	}
 
 }
