@@ -14,6 +14,7 @@ public abstract class Motor{
 	
 	public void move(double differenz, double time, double umfang) {
 		double gradProSekunde = MathUtil.toDegree(differenz, time, umfang);
+		System.out.println("GradproSekunde: " + (int)gradProSekunde);
 		motor.setSpeed((int)gradProSekunde);
 	}
 	
