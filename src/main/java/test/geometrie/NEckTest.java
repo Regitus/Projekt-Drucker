@@ -18,7 +18,10 @@ public class NEckTest {
 		Iterator<Vector> iterator = eck.getIterator();
 		while(iterator.hasNext()) {
 			Vector v = iterator.next();
-			roboter.move(v.getX() + x, v.getY() + y);
+			double x1 = v.getX() + x;
+			double y1 = v.getY() + y;
+
+			roboter.move(x1, y1);
 		}
 	}
 
