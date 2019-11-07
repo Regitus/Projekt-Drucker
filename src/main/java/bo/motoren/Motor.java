@@ -3,6 +3,7 @@ package main.java.bo.motoren;
 import lejos.hardware.motor.EV3LargeRegulatedMotor;
 import lejos.hardware.port.Port;
 import lejos.robotics.RegulatedMotor;
+import main.java.bo.MathUtil;
 
 public abstract class Motor{
 	private EV3LargeRegulatedMotor motor;
@@ -11,8 +12,9 @@ public abstract class Motor{
 		this.motor = new EV3LargeRegulatedMotor(port);
 	}
 	
-	public void move(int position, int time) {
-		
+	public void move(int differenz, int time, int umfang) {
+		double gradProSekunde = MathUtil.toDegree(differenz, time, umfang);
+		motor.setSpeed((int)gradProSekunde);
 	}
 	
 	public EV3LargeRegulatedMotor getMotor() {

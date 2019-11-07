@@ -14,8 +14,7 @@ public class AchsenMotor extends Motor {
 	
 	public void positionaendern(int position, int time) {
 		int differenz = position - letztePosition;
-		double gradProSekunde = MathUtil.toDegree(position, time, UMFANG);
-		super.getMotor().setSpeed((int)gradProSekunde);
+		super.move(differenz, time, UMFANG);
 		letztePosition = position;
 	}
 
