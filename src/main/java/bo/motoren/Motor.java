@@ -32,5 +32,12 @@ public abstract class Motor{
 	public void synchroniseEnd() {
 		this.motor.endSynchronization();
 	}
+	/**
+	 * Stoppt die Bewegung
+	 */
+	public void stop()
+	{
+		this.motor.stop();
+	}
 	
 }

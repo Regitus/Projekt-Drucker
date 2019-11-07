@@ -14,13 +14,20 @@ public class MotorTest {
 	public static void main(String[] args) {
 		FactoryProvider factoryProvider = new FactoryProvider();
 		MotorFactory motorFactory = (MotorFactory) factoryProvider.getFactory(FactoryTyp.MotorFactory);
-		StiftMotor stiftMotor = (StiftMotor) motorFactory.create(MotorTyp.StiftMotor);
+		//StiftMotor stiftMotor = (StiftMotor) motorFactory.create(MotorTyp.StiftMotor);
 		AchsenMotor yMotor = (AchsenMotor) motorFactory.create(MotorTyp.YAchsenMotor);
-		AchsenMotor xMotor = (AchsenMotor) motorFactory.create(MotorTyp.XAchsenMotor);
+		//AchsenMotor xMotor = (AchsenMotor) motorFactory.create(MotorTyp.XAchsenMotor);
 		//stiftMotor.positionaendern(Stellung.OBEN);
-		yMotor.positionaendern(1, 1);
+		int time = 60;
+		
+		yMotor.positionaendern(-5, time);
 		//xMotor.positionaendern(1, 1);
-		Delay.msDelay(1000);
+		Delay.msDelay(time * 1000);
+		yMotor.stop();
+		yMotor.positionaendern(0, time);
+		Delay.msDelay(time * 1000);
+		yMotor.stop();
+		
 	}
 
 }
