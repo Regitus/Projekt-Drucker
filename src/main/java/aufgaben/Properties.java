@@ -14,4 +14,5 @@ public class Properties {
 	public static Port StiftPort = MotorPort.A;
 	public static Port LichtSensorPort = SensorPort.S1;
 	public static Port TouchSensorPort = SensorPort.S2;
+	public static double maxGeschwindigkeit = 1;
 }
