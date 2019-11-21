@@ -47,3 +47,5 @@ public class SwingPaint {
         frame.setVisible(true);
     }
 }
+
+
