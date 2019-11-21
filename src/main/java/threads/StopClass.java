@@ -4,38 +4,42 @@ import lejos.hardware.motor.EV3LargeRegulatedMotor;
 import lejos.hardware.sensor.EV3TouchSensor;
 import lejos.robotics.SampleProvider;
 
+public class StopClass extends Thread {
+	/**
+	 * Nicht funktionierend
+	 */
+	private EV3TouchSensor touch1;
+	Stoptest tmpThread;
+	EV3LargeRegulatedMotor motor;
 
-public class StopClass extends Thread
-{
-    /**
-     * Nicht funktionierend
-     */
-    private EV3TouchSensor touch1;
-    Stoptest tmpThread;
-    EV3LargeRegulatedMotor motor;
-    
-    public StopClass(EV3TouchSensor touch, Stoptest tt, EV3LargeRegulatedMotor motor)
-    {
-        touch1 = touch;
-        tmpThread = tt;
-        this.motor = motor;
-    }
+	public StopClass(EV3TouchSensor touch, Stoptest tt, EV3LargeRegulatedMotor motor) {
+		touch1 = touch;
+		tmpThread = tt;
+		this.motor = motor;
+	}
 
-    @Override
-    public void run() {
-    	
-    	tmpThread.start();
-        final SampleProvider sp = touch1.getTouchMode();
-        int touchValue = 0;
-        while(touchValue != 1)
-        {
+	@Override
+	public void run() {
 
-            float [] sample = new float[sp.sampleSize()];
-            sp.fetchSample(sample, 0);
-            touchValue = (int) sample[0];
-        } 
-        System.out.println("Not Stop!");
-        motor.stop();
-        tmpThread.interrupt();
-    }
+		try {
+			tmpThread.start();
+
+			final SampleProvider sp = touch1.getTouchMode();
+			int touchValue = 0;
+			while (touchValue != 1) {
+
+				float[] sample = new float[sp.sampleSize()];
+				sp.fetchSample(sample, 0);
+				touchValue = (int) sample[0];
+				System.out.println("Running");
+			}
+			System.out.println("Not Stop!");
+			motor.stop();
+			tmpThread.interrupt();
+			System.out.println("Interrupted");
+		} catch (Exception e) {
+			// TODO: handle exception
+			System.out.println(e.getMessage());
+		}
+	}
 }
