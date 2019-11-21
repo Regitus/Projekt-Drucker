@@ -18,7 +18,7 @@ import main.java.bo.factories.MotorTyp;
 
 
 public class Aufgabe2 {
-    public static final EV3LargeRegulatedMotor mA = new EV3LargeRegulatedMotor(MotorPort.B);
+    public static final EV3LargeRegulatedMotor mA = new EV3LargeRegulatedMotor(MotorPort.A);
     
     //Robot Configuration
     private static EV3TouchSensor touch1 = new EV3TouchSensor(SensorPort.S1);

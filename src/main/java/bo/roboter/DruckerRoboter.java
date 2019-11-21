@@ -1,7 +1,11 @@
 package main.java.bo.roboter;
 
 import lejos.hardware.motor.EV3LargeRegulatedMotor;
+import lejos.hardware.port.MotorPort;
+import lejos.hardware.port.SensorPort;
+import lejos.hardware.sensor.EV3TouchSensor;
 import lejos.robotics.RegulatedMotor;
+import lejos.robotics.SampleProvider;
 import lejos.utility.Delay;
 import main.java.aufgaben.Properties;
 import main.java.bo.factories.FactoryProvider;
@@ -24,6 +28,7 @@ public class DruckerRoboter {
 	private TouchSensor touchSensor;
 	
 	public DruckerRoboter () {
+		this.moveToBase();
 		FactoryProvider factoryProvider = new FactoryProvider();
 		MotorFactory motorFactory = (MotorFactory) factoryProvider.getFactory(FactoryTyp.MotorFactory);
 		stiftMotor = (StiftMotor) motorFactory.create(MotorTyp.StiftMotor);
@@ -79,6 +84,10 @@ public class DruckerRoboter {
 		yAchsenMotor.stop();
 		xAchsenMotor.stop();
 		yAchsenMotor.synchroniseEnd();*/
+	}
+	
+	private void moveToBase() {
+		
 	}
 	
 	
