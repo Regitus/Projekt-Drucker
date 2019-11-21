@@ -24,6 +24,8 @@ public class NEck extends Polygon {
 			list.add(v);
 		}
 		
+		list.add(firstVector);
+		
 		return list;
 	}
 }

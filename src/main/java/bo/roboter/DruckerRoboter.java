@@ -42,9 +42,9 @@ public class DruckerRoboter {
 	public void move(double x, double y) {
 		double time;
 		if(x>y) {
-			time = Math.abs(x - xAchsenMotor.getPosition()) * Properties.maxGeschwindigkeit;
+			time = Math.abs(x - xAchsenMotor.getPosition()) * Properties.zeitFaktor;
 		} else {
-			time = Math.abs(y - yAchsenMotor.getPosition()) * Properties.maxGeschwindigkeit;
+			time = Math.abs(y - yAchsenMotor.getPosition()) * Properties.zeitFaktor;
 		}
 		System.out.println("Time: " + time);
 		yAchsenMotor.positionaendern(x, time);
@@ -54,12 +54,11 @@ public class DruckerRoboter {
 	}
 	
 	public void moveSync(double x, double y) {
-		double time;
-		if(x>y) {
-			time = Math.abs(x - xAchsenMotor.getPosition()) * Properties.maxGeschwindigkeit;
-		} else {
-			time = Math.abs(y - yAchsenMotor.getPosition()) * Properties.maxGeschwindigkeit;
-		}
+		double xDifferenz = Math.abs(x - xAchsenMotor.getPosition());
+		double yDifferenz = Math.abs(y - yAchsenMotor.getPosition());
+		
+		double hypothenus = Math.sqrt(Math.pow(xDifferenz, 2) + Math.pow(yDifferenz, 2));
+		double time = hypothenus * Properties.zeitFaktor;
 		
 		
 		/*
@@ -70,20 +69,25 @@ public class DruckerRoboter {
 		
 		yAchsenMotor.setzeGeschwindigkeit(x, time);
 		xAchsenMotor.setzeGeschwindigkeit(y, time);
-		
-		yAchsenMotor.synchronise(syncListe);
-		yAchsenMotor.sychroniseStart();
-		yAchsenMotor.bewegeMotor(x, time);
-		xAchsenMotor.bewegeMotor(y, time);
-		yAchsenMotor.synchroniseEnd();
-		int msTime = (int) (1000 * time);
-		Delay.msDelay(msTime);
-		
-		
-		/*yAchsenMotor.sychroniseStart();
-		yAchsenMotor.stop();
-		xAchsenMotor.stop();
-		yAchsenMotor.synchroniseEnd();*/
+		if(xAchsenMotor.getSpeed() == 0 && yAchsenMotor.getSpeed() == 0) {
+			System.out.println("unused command");
+		} else {
+			yAchsenMotor.synchronise(syncListe);
+			yAchsenMotor.sychroniseStart();
+			yAchsenMotor.bewegeMotor(x, time);
+			xAchsenMotor.bewegeMotor(y, time);
+			yAchsenMotor.synchroniseEnd();
+			int msTime = (int) (1000 * time);
+			Delay.msDelay(msTime);
+			
+			
+			yAchsenMotor.sychroniseStart();
+			yAchsenMotor.stop();
+			yAchsenMotor.waitComplete();
+			xAchsenMotor.stop();
+			xAchsenMotor.waitComplete();
+			yAchsenMotor.synchroniseEnd();
+		}
 	}
 	
 	private void moveToBase() {
