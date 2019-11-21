@@ -12,6 +12,10 @@ public class Vector {
 		this.draw = draw;
 	}
 	
+	public void setDraw(boolean draw) {
+		this.draw = draw;
+	}
+	
 	public double getX() {
 		return x;
 	}
@@ -27,6 +31,12 @@ public class Vector {
 	public static Vector minus(Vector a, Vector b) {
 		double x = a.getX() - b.getX();
 		double y = a.getY() - b.getY();
+		return new Vector(x, y, true);
+	}
+	
+	public static Vector add(Vector a, Vector b) {
+		double x = a.getX() + b.getX();
+		double y = a.getY() + b.getY();
 		return new Vector(x, y, true);
 	}
 
