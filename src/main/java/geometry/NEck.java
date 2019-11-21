@@ -14,7 +14,7 @@ public class NEck extends Polygon {
 	
 	private static List<Vector> create(double radius, int n) {
 		final double gradDistance = MathUtil.gradmassToBogenmass(360 / n);
-		final Vector firstVector = new Vector(0, radius, false);
+		final Vector firstVector = new Vector(0, radius);
 		
 		List<Vector> list = new ArrayList<>();
 		list.add(firstVector);
@@ -24,7 +24,7 @@ public class NEck extends Polygon {
 			list.add(v);
 		}
 		
-		Vector lastVector = new Vector(firstVector.getX(), firstVector.getY(), true);
+		Vector lastVector = new Vector(firstVector.getX(), firstVector.getY());
 		list.add(lastVector);
 		
 		return list;

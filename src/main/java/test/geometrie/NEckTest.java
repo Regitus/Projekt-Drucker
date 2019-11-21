@@ -12,23 +12,26 @@ public class NEckTest {
 	public static void main(String[] args) {
 		DruckerRoboter roboter = new DruckerRoboter();
 		
-		Vector initPosition = new Vector(5, 5, false);
-		move(roboter, initPosition);
+		Vector initPosition = new Vector(5, 5);
+		move(roboter, initPosition, false);
 		
-		NEck eck = new NEck(2, 5);
-		
+		NEck eck = new NEck(2, 5);	
 		Iterator<Vector> iterator = eck.getIterator();
+		
+		Vector v = iterator.next();
+		move(roboter, Vector.add(v, initPosition), false);
+		
 		while(iterator.hasNext()) {
-			Vector v = iterator.next();
+			v = iterator.next();
 			Vector newVector = Vector.add(initPosition, v);
-			move(roboter, newVector);
+			move(roboter, newVector, true);
 		}
 		
 		Delay.msDelay(2000);
 	}
 	
-	public static void move(DruckerRoboter roboter, Vector vector) {
-		roboter.moveSync(vector.getX(), vector.getY(), vector.shouldDraw());
+	public static void move(DruckerRoboter roboter, Vector vector, boolean draw) {
+		roboter.moveSync(vector.getX(), vector.getY(), draw);
 	}
 
 }

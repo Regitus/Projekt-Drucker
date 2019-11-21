@@ -9,10 +9,10 @@ public class Rechteck extends Viereck {
 	
 	public Rechteck(double width, double height) {
 		super(
-			new Vector(0, 0, true),
-			new Vector(0, height, true),
-			new Vector(width, height, true),
-			new Vector(width, 0, true)
+			new Vector(0, 0),
+			new Vector(0, height),
+			new Vector(width, height),
+			new Vector(width, 0)
 		);
 	}
 }

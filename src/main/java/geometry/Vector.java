@@ -4,16 +4,10 @@ public class Vector {
 	
 	private double x;
 	private double y;
-	private boolean draw;
 	
-	public Vector(double x, double y, boolean draw) {
+	public Vector(double x, double y) {
 		this.x = x;
 		this.y = y;
-		this.draw = draw;
-	}
-	
-	public void setDraw(boolean draw) {
-		this.draw = draw;
 	}
 	
 	public double getX() {
@@ -24,20 +18,16 @@ public class Vector {
 		return y;
 	}
 	
-	public boolean shouldDraw() {
-		return draw;
-	}
-	
 	public static Vector minus(Vector a, Vector b) {
 		double x = a.getX() - b.getX();
 		double y = a.getY() - b.getY();
-		return new Vector(x, y, true);
+		return new Vector(x, y);
 	}
 	
 	public static Vector add(Vector a, Vector b) {
 		double x = a.getX() + b.getX();
 		double y = a.getY() + b.getY();
-		return new Vector(x, y, true);
+		return new Vector(x, y);
 	}
 
 }
