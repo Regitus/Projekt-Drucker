@@ -15,16 +15,18 @@ public class AchsenMotor extends Motor {
 	
 	public void positionaendern(double position, double time) {
 		double differenz = position - letztePosition;
+		super.move(Math.abs(differenz), time, UMFANG);
 		if(differenz < 0) {
 			super.getMotor().forward();
 		}
 		else {
 			super.getMotor().backward();
 		}
-		differenz = Math.abs(differenz);
+		System.out.println("Differenz: " + differenz);
 		
-		super.move(differenz, time, UMFANG);
+		
 		letztePosition = position;
+		System.out.println("Letzte Position" + letztePosition);
 	}
 	
 	public double getPosition() {
