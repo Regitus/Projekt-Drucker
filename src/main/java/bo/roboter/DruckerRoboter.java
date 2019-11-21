@@ -15,6 +15,7 @@ import main.java.bo.factories.MotorTyp;
 import main.java.bo.factories.SensorFactory;
 import main.java.bo.factories.SensorenTyp;
 import main.java.bo.motoren.AchsenMotor;
+import main.java.bo.motoren.Stellung;
 import main.java.bo.motoren.StiftMotor;
 import main.java.bo.sensoren.LichtSensor;
 import main.java.bo.sensoren.TouchSensor;
@@ -69,25 +70,59 @@ public class DruckerRoboter {
 		
 		yAchsenMotor.setzeGeschwindigkeit(x, time);
 		xAchsenMotor.setzeGeschwindigkeit(y, time);
-		if(xAchsenMotor.getSpeed() == 0 && yAchsenMotor.getSpeed() == 0) {
-			System.out.println("unused command");
+		yAchsenMotor.synchronise(syncListe);
+		yAchsenMotor.sychroniseStart();
+		yAchsenMotor.bewegeMotor(x, time);
+		xAchsenMotor.bewegeMotor(y, time);
+		yAchsenMotor.synchroniseEnd();
+		int msTime = (int) (1000 * time);
+		Delay.msDelay(msTime);
+				
+		yAchsenMotor.sychroniseStart();
+		yAchsenMotor.stop();
+		yAchsenMotor.waitComplete();
+		xAchsenMotor.stop();
+		xAchsenMotor.waitComplete();
+		yAchsenMotor.synchroniseEnd();
+		
+	}
+	
+	public void moveSync(double x, double y, boolean draw) {
+		double xDifferenz = Math.abs(x - xAchsenMotor.getPosition());
+		double yDifferenz = Math.abs(y - yAchsenMotor.getPosition());
+		
+		double hypothenus = Math.sqrt(Math.pow(xDifferenz, 2) + Math.pow(yDifferenz, 2));
+		double time = hypothenus * Properties.zeitFaktor;
+		
+		
+		/*
+		 * Liste für gesyncte Motoren, die zu yAchsen bewegt werden sollen
+		 */
+		EV3LargeRegulatedMotor syncListe[] = new EV3LargeRegulatedMotor[1];
+		syncListe[0] = xAchsenMotor.getMotor();
+		if(draw) {
+			stiftMotor.positionaendern(Stellung.UNTEN);
 		} else {
-			yAchsenMotor.synchronise(syncListe);
-			yAchsenMotor.sychroniseStart();
-			yAchsenMotor.bewegeMotor(x, time);
-			xAchsenMotor.bewegeMotor(y, time);
-			yAchsenMotor.synchroniseEnd();
-			int msTime = (int) (1000 * time);
-			Delay.msDelay(msTime);
-			
-			
-			yAchsenMotor.sychroniseStart();
-			yAchsenMotor.stop();
-			yAchsenMotor.waitComplete();
-			xAchsenMotor.stop();
-			xAchsenMotor.waitComplete();
-			yAchsenMotor.synchroniseEnd();
+			stiftMotor.positionaendern(Stellung.OBEN);
 		}
+		
+		yAchsenMotor.setzeGeschwindigkeit(x, time);
+		xAchsenMotor.setzeGeschwindigkeit(y, time);
+		yAchsenMotor.synchronise(syncListe);
+		yAchsenMotor.sychroniseStart();
+		yAchsenMotor.bewegeMotor(x, time);
+		xAchsenMotor.bewegeMotor(y, time);
+		yAchsenMotor.synchroniseEnd();
+		int msTime = (int) (1000 * time);
+		Delay.msDelay(msTime);
+				
+		yAchsenMotor.sychroniseStart();
+		yAchsenMotor.stop();
+		yAchsenMotor.waitComplete();
+		xAchsenMotor.stop();
+		xAchsenMotor.waitComplete();
+		yAchsenMotor.synchroniseEnd();
+		
 	}
 	
 	private void moveToBase() {

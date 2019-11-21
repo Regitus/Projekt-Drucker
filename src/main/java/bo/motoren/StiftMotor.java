@@ -25,7 +25,7 @@ public class StiftMotor extends Motor{
 			lastStellung = Stellung.OBEN;
 		}
 		else {
-			super.getMotor().rotateTo(180);
+			super.getMotor().rotateTo(90);
 			lastStellung = Stellung.UNTEN;
 		}
 

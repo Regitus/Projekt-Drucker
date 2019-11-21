@@ -37,12 +37,14 @@ public class DrawArea extends JComponent {
                 oldY = e.getY();
                 draw = true;
                 makeVector(e.getX(),e.getY());
+                System.out.print("Preseed");
             }
 
             @Override
             public void mouseReleased(MouseEvent e) {
                 draw = false;
                 makeVector(e.getX(),e.getY());
+                System.out.print("released");
             }
         });
 
@@ -51,7 +53,7 @@ public class DrawArea extends JComponent {
                 currentX = e.getX();
                 currentY = e.getY();
                 makeVector(e.getX(),e.getY());
-
+                Sys
                 if (g2 != null) {
                     g2.drawLine(oldX, oldY, currentX, currentY);
                     repaint();
@@ -97,12 +99,12 @@ public class DrawArea extends JComponent {
         	//System.out.println(lastX +";"+realX+";" +(lastX-realX));
         	lastX = realX;
         	lastY = realY;
-        	System.out.println("roboter.moveSync("+realX+","+realY+");");	
+        	System.out.println("roboter.moveSync("+realX+","+realY+","+vector.isDraw()+");");	
         } else if((lastY-realY) > 0.25 || (lastY-realY) < -0.25) {
         	//System.out.println(lastY +";"+realY+";" +(lastY-y));
         	lastX = realX;
         	lastY = realY;
-        	System.out.println("roboter.moveSync("+realX+","+realY+");");	
+        	System.out.println("roboter.moveSync("+realX+","+realY+","+vector.isDraw()+");");	
         }
     }
 
