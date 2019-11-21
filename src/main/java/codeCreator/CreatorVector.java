@@ -4,7 +4,10 @@ public class CreatorVector {
     private double x;
     private double y;
     private boolean draw;
-
+    private double realX;
+    private double realY;
+    
+    
     public double getX() {
         return x;
     }
@@ -28,17 +31,19 @@ public class CreatorVector {
     public void setDraw(boolean draw) {
         this.draw = draw;
     }
+    
+    public double getRealX() {
+    	return realX;
+    }
+    
+    public double getRealY() {
+    	return realY;
+    }
 
-    public String toString(){
-        double realX = (CreatorProperties.paintLenght/CreatorProperties.pixel) * x;
-        double realY = (CreatorProperties.paintLenght/CreatorProperties.pixel) * y;
+    public void getRealPositions(){
+        realX = (CreatorProperties.paintLenght/CreatorProperties.pixel) * x;
+        realY = (CreatorProperties.paintLenght/CreatorProperties.pixel) * y;
         realX = Math.round(realX*100)/100.0;
         realY = Math.round(realY*100)/100.0;
-        if(realX <16 && realY <15){
-            //return "roboter.move("+realX+","+realY+","+ draw+");";
-            return "roboter.move("+realX+","+realY+");";
-        } else {
-            return "";
-        }
     }
 }

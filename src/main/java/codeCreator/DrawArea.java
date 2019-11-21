@@ -24,7 +24,8 @@ public class DrawArea extends JComponent {
     private Image image;
     private Graphics2D g2;
     private int currentX, currentY, oldX, oldY;
-
+    private double lastX = 0;
+    private double lastY = 0;
     private List<CreatorVector> list = new LinkedList<>();
     private boolean draw = false;
 
@@ -86,7 +87,23 @@ public class DrawArea extends JComponent {
         vector.setX(x);
         vector.setY(y);
         vector.setDraw(draw);
-        System.out.println(vector.toString());
+        
+        vector.getRealPositions();
+        double realX = vector.getRealX();
+        double realY = vector.getRealY();
+         
+        
+        if((lastX-realX) > 0.25 || (lastX-realX) < -0.25) {
+        	//System.out.println(lastX +";"+realX+";" +(lastX-realX));
+        	lastX = realX;
+        	lastY = realY;
+        	System.out.println("roboter.moveSync("+realX+","+realY+");");	
+        } else if((lastY-realY) > 0.25 || (lastY-realY) < -0.25) {
+        	//System.out.println(lastY +";"+realY+";" +(lastY-y));
+        	lastX = realX;
+        	lastY = realY;
+        	System.out.println("roboter.moveSync("+realX+","+realY+");");	
+        }
     }
 
 }
