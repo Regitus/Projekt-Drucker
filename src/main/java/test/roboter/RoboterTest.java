@@ -17,10 +17,10 @@ public class RoboterTest {
 		MotorFactory motorFactory = (MotorFactory) factoryProvider.getFactory(FactoryTyp.MotorFactory);
 		StiftMotor stiftMotor = (StiftMotor) motorFactory.create(MotorTyp.StiftMotor);
 		
-		for(int i = 0; i<30; i++) {
+		//for(int i = 0; i<30; i++) {
 			stiftMotor.positionaendern(Stellung.UNTEN);
 			stiftMotor.positionaendern(Stellung.OBEN);
-		}
+		//}
 	
 		
 	}
