@@ -23,42 +23,51 @@ public class DrawArea extends JComponent {
 
     private Image image;
     private Graphics2D g2;
-    private int currentX, currentY, oldX, oldY;
-    private double lastX = 0;
-    private double lastY = 0;
+    private double currentX, currentY, oldX, oldY;
+    private int currentPaintX, currentPaintY, oldPaintX, oldPaintY;
     private List<CreatorVector> list = new LinkedList<>();
-    private boolean draw = false;
+    //private boolean draw = false;
 
     public DrawArea() {
         setDoubleBuffered(false);
         addMouseListener(new MouseAdapter() {
             public void mousePressed(MouseEvent e) {
-                oldX = e.getX();
-                oldY = e.getY();
-                draw = true;
-                makeVector(e.getX(),e.getY());
-                System.out.print("Preseed");
+            	oldPaintX = e.getX();
+                oldPaintY = e.getY();
+                oldX = calculateRealNumber(e.getX());
+                oldY = calculateRealNumber(e.getY());
+                System.out.println("//==================new Object ============");
+                makeVector(oldX,oldY,false);
             }
 
             @Override
             public void mouseReleased(MouseEvent e) {
-                draw = false;
-                makeVector(e.getX(),e.getY());
-                System.out.print("released");
+            	oldPaintX = e.getX();
+                oldPaintY = e.getY();
+                oldX = calculateRealNumber(e.getX());
+                oldY = calculateRealNumber(e.getY());
+                makeVector(oldX,oldY,true);
             }
         });
 
         addMouseMotionListener(new MouseMotionAdapter() {
             public void mouseDragged(MouseEvent e) {
-                currentX = e.getX();
-                currentY = e.getY();
-                makeVector(e.getX(),e.getY());
-                Sys
-                if (g2 != null) {
-                    g2.drawLine(oldX, oldY, currentX, currentY);
-                    repaint();
-                    oldX = currentX;
-                    oldY = currentY;
+            	currentX = calculateRealNumber(e.getX());
+                currentY = calculateRealNumber(e.getY());
+            	double xDifferenze = Math.abs(oldX-currentX);
+                double yDifferenze = Math.abs(oldY-currentY);
+                if( xDifferenze > 0.5 || xDifferenze < -0.5 || yDifferenze > 0.5 || yDifferenze < -0.5) {
+                	currentPaintX = e.getX();
+                    currentPaintY = e.getY();
+                    oldX = calculateRealNumber(e.getX());
+                    oldY = calculateRealNumber(e.getY());
+                    makeVector(oldX, oldY,true);
+                    if (g2 != null) {
+                        g2.drawLine(oldPaintX, oldPaintY, currentPaintX, currentPaintY);
+                        repaint();
+                        oldPaintX = currentPaintX;
+                        oldPaintY = currentPaintY;
+                    }
                 }
             }
         });
@@ -71,41 +80,28 @@ public class DrawArea extends JComponent {
             g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
             clear();
         }
-
         g.drawImage(image, 0, 0, null);
     }
 
     public void clear() {
         g2.setPaint(Color.white);
-
         g2.fillRect(0, 0, getSize().width, getSize().height);
         g2.setPaint(Color.black);
         repaint();
         list.clear();
     }
 
-    private void makeVector(double x, double y){
+    private void makeVector(double x, double y, boolean draw){
         CreatorVector vector = new CreatorVector();
         vector.setX(x);
         vector.setY(y);
         vector.setDraw(draw);
-        
-        vector.getRealPositions();
-        double realX = vector.getRealX();
-        double realY = vector.getRealY();
-         
-        
-        if((lastX-realX) > 0.25 || (lastX-realX) < -0.25) {
-        	//System.out.println(lastX +";"+realX+";" +(lastX-realX));
-        	lastX = realX;
-        	lastY = realY;
-        	System.out.println("roboter.moveSync("+realX+","+realY+","+vector.isDraw()+");");	
-        } else if((lastY-realY) > 0.25 || (lastY-realY) < -0.25) {
-        	//System.out.println(lastY +";"+realY+";" +(lastY-y));
-        	lastX = realX;
-        	lastY = realY;
-        	System.out.println("roboter.moveSync("+realX+","+realY+","+vector.isDraw()+");");	
-        }
+        System.out.println(vector.toString());
+    }
+    
+    private double calculateRealNumber(int pixelPosition) {
+    	double cmNumber =  (CreatorProperties.paintLenght/CreatorProperties.pixel) * pixelPosition;
+    	return Math.round(cmNumber*100)/100.0;
     }
 
 }
