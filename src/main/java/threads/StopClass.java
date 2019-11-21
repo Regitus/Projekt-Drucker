@@ -34,7 +34,7 @@ public class StopClass extends Thread
             sp.fetchSample(sample, 0);
             touchValue = (int) sample[0];
         } 
-        System.out.println("NotStop!");
+        System.out.println("Not Stop!");
         motor.stop();
         tmpThread.interrupt();
     }
