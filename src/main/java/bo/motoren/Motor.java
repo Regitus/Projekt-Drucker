@@ -43,24 +43,8 @@ public abstract class Motor{
 		this.motor.stop();
 	}
 	
-	public void trueStop() {
-		this.motor.stop(true);
-	}
-	
-	public void floatStop() {
-		this.motor.flt();
-	}
-	
-	public void trueFloatStop() {
-		this.motor.flt(true);
-	}
-	
 	public void waitComplete() {
 		this.motor.waitComplete();
-	}
-	
-	public int getSpeed() {
-		return speed;
 	}
 	
 }

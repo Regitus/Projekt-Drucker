@@ -38,54 +38,7 @@ public class DruckerRoboter {
 		SensorFactory sensorFactory = (SensorFactory) factoryProvider.getFactory(FactoryTyp.SensorenFactory);
 		lichtSensor = (LichtSensor) sensorFactory.create(SensorenTyp.LichtSensor);
 		touchSensor = (TouchSensor) sensorFactory.create(SensorenTyp.TouchSensor);
-	}
-	
-	public void move(double x, double y) {
-		double time;
-		if(x>y) {
-			time = Math.abs(x - xAchsenMotor.getPosition()) * Properties.zeitFaktor;
-		} else {
-			time = Math.abs(y - yAchsenMotor.getPosition()) * Properties.zeitFaktor;
-		}
-		System.out.println("Time: " + time);
-		yAchsenMotor.positionaendern(x, time);
-		xAchsenMotor.positionaendern(y, time);
-		int msTime = (int) (1000 * time);
-		Delay.msDelay(msTime);
-	}
-	
-	public void moveSync(double x, double y) {
-		double xDifferenz = Math.abs(x - xAchsenMotor.getPosition());
-		double yDifferenz = Math.abs(y - yAchsenMotor.getPosition());
-		
-		double hypothenus = Math.sqrt(Math.pow(xDifferenz, 2) + Math.pow(yDifferenz, 2));
-		double time = hypothenus * Properties.zeitFaktor;
-		
-		
-		/*
-		 * Liste für gesyncte Motoren, die zu yAchsen bewegt werden sollen
-		 */
-		EV3LargeRegulatedMotor syncListe[] = new EV3LargeRegulatedMotor[1];
-		syncListe[0] = xAchsenMotor.getMotor();
-		
-		yAchsenMotor.setzeGeschwindigkeit(x, time);
-		xAchsenMotor.setzeGeschwindigkeit(y, time);
-		yAchsenMotor.synchronise(syncListe);
-		yAchsenMotor.sychroniseStart();
-		yAchsenMotor.bewegeMotor(x, time);
-		xAchsenMotor.bewegeMotor(y, time);
-		yAchsenMotor.synchroniseEnd();
-		int msTime = (int) (1000 * time);
-		Delay.msDelay(msTime);
-				
-		yAchsenMotor.sychroniseStart();
-		yAchsenMotor.stop();
-		yAchsenMotor.waitComplete();
-		xAchsenMotor.stop();
-		xAchsenMotor.waitComplete();
-		yAchsenMotor.synchroniseEnd();
-		
-	}
+	}	
 	
 	public void moveSync(double x, double y, boolean draw) {
 		double xDifferenz = Math.abs(x - xAchsenMotor.getPosition());

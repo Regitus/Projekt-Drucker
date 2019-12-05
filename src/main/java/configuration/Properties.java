@@ -1,4 +1,4 @@
-package main.java.aufgaben;
+package main.java.configuration;
 
 import lejos.hardware.port.MotorPort;
 import lejos.hardware.port.Port;
