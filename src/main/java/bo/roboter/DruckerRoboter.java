@@ -7,7 +7,7 @@ import lejos.hardware.sensor.EV3TouchSensor;
 import lejos.robotics.RegulatedMotor;
 import lejos.robotics.SampleProvider;
 import lejos.utility.Delay;
-import main.java.aufgaben.Properties;
+import main.java.configuration.Properties;
 import main.java.bo.factories.FactoryProvider;
 import main.java.bo.factories.FactoryTyp;
 import main.java.bo.factories.MotorFactory;

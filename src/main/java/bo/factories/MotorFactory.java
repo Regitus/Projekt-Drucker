@@ -1,6 +1,6 @@
 package main.java.bo.factories;
 
-import main.java.aufgaben.Properties;
+import main.java.configuration.Properties;
 import main.java.bo.motoren.AchsenMotor;
 import main.java.bo.motoren.Motor;
 import main.java.bo.motoren.StiftMotor;
