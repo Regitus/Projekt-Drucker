@@ -5,9 +5,6 @@ import lejos.hardware.sensor.EV3TouchSensor;
 import lejos.robotics.SampleProvider;
 
 public class StopClass extends Thread {
-	/**
-	 * Nicht funktionierend
-	 */
 	private EV3TouchSensor touch1;
 	Stoptest tmpThread;
 	EV3LargeRegulatedMotor motor;
